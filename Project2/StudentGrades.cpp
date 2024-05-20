@@ -1,12 +1,13 @@
 #include "StudentGrades.h"  // Include the header file
+using namespace std;
 
 int enteringGrades(int grades[]) {
-    std::cout << "Enter grades (press 0 to finish)" << std::endl;
+    cout << "Enter grades (press 0 to finish)" << std::endl;
     int gradesNumber = 0;
     for (int i = 0; i < maximumGrades; i++) {
         int grade;
-        std::cout << "Enter grade ";
-        std::cin >> grade;
+        cout << "Enter grade ";
+        cin >> grade;
         if (gradesNumber >= maximumGrades || grade == 0) {
             break;
         }
@@ -16,40 +17,40 @@ int enteringGrades(int grades[]) {
 }
 
 void addingGrades(StudentGrades& student) {
-    std::cout << "Enter grades of " << student.name << std::endl;
+    cout << "Enter grades of " << student.name << endl;
 
-    std::cout << "Assignments" << std::endl;
+    cout << "Assignments" << endl;
     student.numberAssignments = enteringGrades(student.assignments);
 
-    std::cout << "Quizzes" << std::endl;
+    cout << "Quizzes" << endl;
     student.numberQuizzes = enteringGrades(student.quizzes);
 
-    std::cout << "Midterms" << std::endl;
+    cout << "Midterms" << endl;
     student.numberMidterms = enteringGrades(student.midterms);
 
-    std::cout << "Final Exam" << std::endl;
-    std::cin >> student.finalexam;
+    cout << "Final Exam" << endl;
+    cin >> student.finalexam;
 }
 
 void printallGrades(StudentGrades& student) {
-    std::cout << "Grades of " << student.name << std::endl;
-    std::cout << "Assignments ";
+    cout << "Grades of " << student.name << endl;
+    cout << "Assignments ";
     for (int i = 0; i < student.numberAssignments; i++) {
-        std::cout << student.assignments[i] << " ";
+        cout << student.assignments[i] << " ";
     }
-    std::cout << std::endl;
+    cout <<endl;
 
-    std::cout << "Quizzes ";
+    cout << "Quizzes ";
     for (int i = 0; i < student.numberQuizzes; i++) {
-        std::cout << student.quizzes[i] << " ";
+        cout << student.quizzes[i] << " ";
     }
-    std::cout << std::endl;
+    cout << endl;
 
-    std::cout << "Midterms ";
+    cout << "Midterms ";
     for (int i = 0; i < student.numberMidterms; i++) {
-        std::cout << student.midterms[i] << " ";
+        cout << student.midterms[i] << " ";
     }
-    std::cout << std::endl;
+    cout << endl;
 
-    std::cout << "Final Exam " << student.finalexam << std::endl;
+    cout << "Final Exam " << student.finalexam << endl;
 }

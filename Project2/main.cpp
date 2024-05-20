@@ -1,25 +1,25 @@
 #include <iostream>
 #include "StudentGrades.h"  // Include the header file
-
+using namespace std;
 int main() {
     int studentsNumber;
-    std::cout << "Enter number of students ";
-    std::cin >> studentsNumber;
+    cout << "Enter number of students ";
+    cin >> studentsNumber;
 
     StudentGrades students[10];
 
     for (int i = 0; i < studentsNumber; i++) {
-        std::cout << "Enter name of student ";
-        std::cin >> students[i].name;
+        cout << "Enter name of student ";
+        cin >> students[i].name;
         students[i].numberAssignments = 0;
         students[i].numberQuizzes = 0;
         students[i].numberMidterms = 0;
         addingGrades(students[i]);
     }
-    std::cout << "All Grades" << std::endl;
+    cout << "All Grades" << std::endl;
     for (int i = 0; i < studentsNumber; i++) {
         printallGrades(students[i]);
-        std::cout << std::endl;
+        cout <<endl;
     }
 
     return 0;
