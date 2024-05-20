@@ -1,12 +1,14 @@
-#include <iostream>
-#include "StudentGrades.h"  // Include the header file
+#include<iostream>
+#include"StudentGrades.h"
 using namespace std;
 int main() {
-    int studentsNumber;
+    int StudentsNumber;
     cout << "Enter number of students ";
-    cin >> studentsNumber;
-    vector<StudentGrades> students;
-    for (int i = 0; i < studentsNumber; i++) {
+    cin >> StudentsNumber;
+
+    StudentGrades students[10];
+
+    for (int i = 0; i < StudentsNumber; i++) {
         cout << "Enter name of student ";
         cin >> students[i].name;
         students[i].numberAssignments = 0;
@@ -14,13 +16,10 @@ int main() {
         students[i].numberMidterms = 0;
         addingGrades(students[i]);
     }
-    cout << "All Grades" << std::endl;
-    for (int i = 0; i < studentsNumber; i++) {
+    cout << "All Grades" << endl;
+    for (int i = 0; i < StudentsNumber; i++) {
         printallGrades(students[i]);
-        cout <<endl;
     }
+
     return 0;
 }
-//this is an edit
-
-// Another edit
