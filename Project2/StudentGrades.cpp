@@ -61,5 +61,7 @@ void printallGrades(const StudentGrades& student) {
     }
     cout << "Final Exam " << student.finalexam << endl;
     final = student.finalexam;
-    cout <<"Total Grade = " << totalAssignments + totalQuizzes + midterm + final<<"%"<<endl;
+    int overallgrade = 0;
+    overallgrade = totalAssignments + totalQuizzes + midterm + final;
+    cout <<"Total Grade = " << overallgrade<<"%"<<endl;
 }
