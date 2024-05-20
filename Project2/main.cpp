@@ -5,9 +5,7 @@ int main() {
     int studentsNumber;
     cout << "Enter number of students ";
     cin >> studentsNumber;
-
-    StudentGrades students[10];
-
+    vector<StudentGrades> students;
     for (int i = 0; i < studentsNumber; i++) {
         cout << "Enter name of student ";
         cin >> students[i].name;
@@ -21,7 +19,6 @@ int main() {
         printallGrades(students[i]);
         cout <<endl;
     }
-
     return 0;
 }
 //this is an edit

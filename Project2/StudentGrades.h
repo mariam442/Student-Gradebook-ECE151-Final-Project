@@ -18,10 +18,8 @@ struct StudentGrades {
 	int finalexam;
 };
 
-int enteringGrades(int grades[]);
-
+int enteringGrades(int grades[], int maxGrades);
 void addingGrades(StudentGrades& student);
+void printallGrades(const StudentGrades& student); // Pass by reference to avoid unnecessary copying
 
-void printallGrades(StudentGrades& student);
-
-#endif  // STUDENT_GRADES_H
+#endif // STUDENT_GRADES_H
