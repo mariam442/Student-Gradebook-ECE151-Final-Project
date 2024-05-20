@@ -35,16 +35,24 @@ void addingGrades(StudentGrades& student) {
 
 void printallGrades(const StudentGrades& student) {
     cout << "Grades of " << student.name << endl;
+
+    int totalAssignments = 0;
+    int totalQuizzes = 0;
+
     cout << "Assignments ";
     for (int i = 0; i < student.numberAssignments; i++) {
+        totalAssignments += student.assignments[i];
         cout << student.assignments[i] << " ";
     }
-    cout << endl;
+    cout << " (Total: " << totalAssignments << ")" << endl; // Print sum after loop
 
     cout << "Quizzes ";
     for (int i = 0; i < student.numberQuizzes; i++) {
+        totalQuizzes += student.quizzes[i];
         cout << student.quizzes[i] << " ";
     }
+    cout << " (Total: " << totalQuizzes << ")" << endl; // Print sum after loop
+
     cout << "Midterms ";
     for (int i = 0; i < student.numberMidterms; i++) {
         cout << student.midterms[i] << " ";
