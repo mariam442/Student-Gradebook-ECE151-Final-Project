@@ -38,7 +38,8 @@ void printallGrades(const StudentGrades& student) {
 
     int totalAssignments = 0;
     int totalQuizzes = 0;
-
+    int midterm = 0;
+    int final = 0;
     cout << "Assignments ";
     for (int i = 0; i < student.numberAssignments; i++) {
         totalAssignments += student.assignments[i];
@@ -56,6 +57,9 @@ void printallGrades(const StudentGrades& student) {
     cout << "Midterms ";
     for (int i = 0; i < student.numberMidterms; i++) {
         cout << student.midterms[i] << " ";
+        midterm = student.midterms[i];
     }
     cout << "Final Exam " << student.finalexam << endl;
+    final = student.finalexam;
+    cout <<"Total Grade = " << totalAssignments + totalQuizzes + midterm + final<<"%"<<endl;
 }
