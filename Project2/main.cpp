@@ -20,6 +20,5 @@ int main() {
     for (int i = 0; i < StudentsNumber; i++) {
         printallGrades(students[i]);
     }
-
     return 0;
 }
