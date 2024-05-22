@@ -22,7 +22,8 @@ struct StudentGrades {
 int enteringGrades(int grades[], int maxGrades);
 void addingGrades(StudentGrades& student);
 double calculateTotalAverage(const StudentGrades students[], int numStudents);
-
+int getValidIntegerInput(const std::string& prompt); // Declaration of getValidIntegerInput function
+std::string getValidNameInput(const std::string& prompt);
 #endif // STUDENT_GRADES_H
 
 

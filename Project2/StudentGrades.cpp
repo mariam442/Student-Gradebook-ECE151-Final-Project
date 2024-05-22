@@ -1,24 +1,58 @@
 #include "StudentGrades.h" // Include the header file
 #include <fstream> // Include the header for file stream operations
-#include <string>
-#include <cctype> // for std::isalpha
+#include <string>  // for any string
+#include <limits> // for numeric_limits
+#include <cctype> // for std::isdigit
+#include <algorithm> // for std::any_of
 
 using namespace std;
 
+// Function to get validated integer input
+int getValidIntegerInput(const string& prompt) {
+    int StudentsNumber;
+
+    // Keep asking for input until a valid integer is entered
+    cout << prompt;
+    while (!(cin >> StudentsNumber)) {
+        cin.clear(); // Clear error flag
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+        cout << "Invalid input. Please enter an integer." << endl;
+        cout << prompt;
+    }
+
+    return StudentsNumber;
+}
+
+string getValidNameInput(const string& prompt) {
+    string name;
+
+    // Keep asking for input until a non-empty string without numeric characters is entered
+    do {
+        cout << prompt;
+        getline(cin >> ws, name); // Get the entire line
+
+        // Check if the entered string is empty or contains numeric characters
+        if (name.empty() || any_of(name.begin(), name.end(), ::isdigit)) {
+            cout << "Invalid input. Please enter a non-empty name without numeric characters." << endl;
+        }
+    } while (name.empty() || any_of(name.begin(), name.end(), ::isdigit));
+
+    return name;
+}
+
 int enteringGrades(int grades[], int maxGrades) {
-    cout << "Enter grades" << endl;
+    cout << "Enter Grades" << endl;
     int Gradesnumber = 0;
     for (int i = 0; i < maxGrades; i++) {
         int grade;
-        cout << "Enter grade ";
-        cin >> grade; //need validation
+        grade = getValidIntegerInput("Enter Grade ");
         grades[Gradesnumber++] = grade;
     }
     return Gradesnumber;
 }
 
 void addingGrades(StudentGrades& student) {
-    cout << "Enter grades of " << student.name << endl;
+    cout << "Enter Grades of " << student.name << endl;
 
     cout << "Assignments" << endl;
     student.numberAssignments = enteringGrades(student.assignments, 3);
@@ -26,11 +60,11 @@ void addingGrades(StudentGrades& student) {
     cout << "Quizzes" << endl;
     student.numberQuizzes = enteringGrades(student.quizzes, 2);
 
-    cout << "Midterms" << endl;
+    cout << "Midterm" << endl;
     student.numberMidterms = enteringGrades(student.midterms, 1);
 
     cout << "Final Exam" << endl;
-    cin >> student.finalexam; //need validation
+    student.finalexam = getValidIntegerInput("Enter Grade ");
     cout << student.finalexam << endl; // Print final exam grade to file
 }
 

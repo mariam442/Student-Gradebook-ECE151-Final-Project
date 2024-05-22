@@ -1,12 +1,16 @@
 #include <iostream>
-#include <fstream>
-#include "StudentGrades.h"
+#include <fstream> // Include the header for file stream operations
+#include "StudentGrades.h" // Include the header file
 #include "functions.h" // Include the header file containing function declarationsusing namespace std;
+#include <limits> // for numeric_limits
+#include <cctype> // for std::isdigit
+#include <algorithm> // for std::any_of
+
 using namespace std;
 int main() {
     int StudentsNumber;
-    cout << "Enter number of students ";
-    cin >> StudentsNumber; //need validation
+    // Call the function to get validated integer input
+    StudentsNumber = getValidIntegerInput("Enter Number of Students: ");
 
     StudentGrades students[10];
 
@@ -18,9 +22,7 @@ int main() {
     }
 
     for (int i = 0; i < StudentsNumber; i++) {
-        cout << "Enter name of student ";
-        cin >> students[i].name; //need validation
-
+        students[i].name = getValidNameInput("Enter Name of Student: ");
         students[i].numberAssignments = 0;
         students[i].numberQuizzes = 0;
         students[i].numberMidterms = 0;
