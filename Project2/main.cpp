@@ -7,6 +7,7 @@
 #include <algorithm> // for std::any_of
 
 using namespace std;
+
 int main() {
     int StudentsNumber;
     // Call the function to get validated integer input
@@ -21,7 +22,7 @@ int main() {
         return 1;
     }
 
-    for (int i = 0; i < StudentsNumber; i++) {
+    for (int i = 0; i < StudentsNumber; i++) { // A loop for inputing each student grades
         students[i].name = getValidNameInput("Enter Name of Student: ");
         students[i].numberAssignments = 0;
         students[i].numberQuizzes = 0;

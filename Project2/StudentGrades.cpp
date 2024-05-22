@@ -46,7 +46,7 @@ int enteringGrades(int grades[], int maxGrades) {
     int Gradesnumber = 0;
     for (int i = 0; i < maxGrades; i++) {
         int grade;
-        grade = getValidIntegerInput("Enter Grade ");
+        grade = getValidIntegerInput("Enter Grade "); //Calling getValidIntegrInput function
         grades[Gradesnumber++] = grade;
     }
     return Gradesnumber;
@@ -66,8 +66,7 @@ void addingGrades(StudentGrades& student) {
     student.numberMidterms = enteringGrades(student.midterms, 1);
 
     cout << "Final Exam" << endl;
-    student.finalexam = getValidIntegerInput("Enter Grade ");
-    cout << student.finalexam << endl; // Print final exam grade to file
+    student.finalexam = getValidIntegerInput("Enter Grade "); //Calling getValidIntegrInput function
 }
 
 double printallGrades(const StudentGrades& student, ofstream& outFile) {
@@ -91,7 +90,7 @@ double printallGrades(const StudentGrades& student, ofstream& outFile) {
     }
     outFile << " (Total: " << totalQuizzes << ")" << endl; // Print sum after loop
 
-    outFile << "Midterms ";
+    outFile << "Midterm ";
     for (int i = 0; i < student.numberMidterms; i++) {
         outFile << student.midterms[i] << " ";
         midterm = student.midterms[i];

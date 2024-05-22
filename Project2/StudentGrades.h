@@ -19,7 +19,7 @@ struct StudentGrades {
 	double overallgrade;
 };
 
-int enteringGrades(int grades[], int maxGrades);
+int enteringGrades(int grades[], int maxGrades); // This is a decoration for function entering grades
 void addingGrades(StudentGrades& student);
 double calculateTotalAverage(const StudentGrades students[], int numStudents);
 int getValidIntegerInput(const std::string& prompt); // Declaration of getValidIntegerInput function
