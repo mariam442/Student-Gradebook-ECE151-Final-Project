@@ -42,11 +42,11 @@ string getValidNameInput(const string& prompt) {
 
 // a function for entering grades of each student
 int enteringGrades(int grades[], int maxGrades) {
-    cout << "Enter Grades" << endl;
+    cout << "Please enter the grades"<<endl<<"-----------------------" << endl;
     int Gradesnumber = 0;
     for (int i = 0; i < maxGrades; i++) {
         int grade;
-        grade = getValidIntegerInput("Enter Grade "); //Calling getValidIntegrInput function
+        grade = getValidIntegerInput("Enter a Grade out of 10: "); //Calling getValidIntegrInput function
         grades[Gradesnumber++] = grade;
     }
     return Gradesnumber;
@@ -66,7 +66,8 @@ void addingGrades(StudentGrades& student) {
     student.numberMidterms = enteringGrades(student.midterms, 1);
 
     cout << "Final Exam" << endl;
-    student.finalexam = getValidIntegerInput("Enter Grade "); //Calling getValidIntegrInput function
+    student.finalexam = getValidIntegerInput("Enter a Grade out of 40: "); //Calling getValidIntegrInput function
+    cout << endl << "-----------------------" << endl;
 }
 
 double printallGrades(const StudentGrades& student, ofstream& outFile) {
