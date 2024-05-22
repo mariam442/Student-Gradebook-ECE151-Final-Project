@@ -40,6 +40,7 @@ string getValidNameInput(const string& prompt) {
     return name;
 }
 
+// a function for entering grades of each student
 int enteringGrades(int grades[], int maxGrades) {
     cout << "Enter Grades" << endl;
     int Gradesnumber = 0;
@@ -51,11 +52,12 @@ int enteringGrades(int grades[], int maxGrades) {
     return Gradesnumber;
 }
 
+//integrating each grade input with each student
 void addingGrades(StudentGrades& student) {
-    cout << "Enter Grades of " << student.name << endl;
+    cout << "Enter Grades of: " << student.name << endl;
 
     cout << "Assignments" << endl;
-    student.numberAssignments = enteringGrades(student.assignments, 3);
+    student.numberAssignments = enteringGrades(student.assignments, 3); //calling function entering grades
 
     cout << "Quizzes" << endl;
     student.numberQuizzes = enteringGrades(student.quizzes, 2);
