@@ -1,4 +1,7 @@
 #include "StudentGrades.h" // Include the header file
+#include <fstream> // Include the header for file stream operations
+#include <string>
+#include <cctype> // for std::isalpha
 
 using namespace std;
 
@@ -8,10 +11,7 @@ int enteringGrades(int grades[], int maxGrades) {
     for (int i = 0; i < maxGrades; i++) {
         int grade;
         cout << "Enter grade ";
-        cin >> grade;
-        if (grade == 0) {
-            break;
-        }
+        cin >> grade; //need validation
         grades[Gradesnumber++] = grade;
     }
     return Gradesnumber;
@@ -30,38 +30,57 @@ void addingGrades(StudentGrades& student) {
     student.numberMidterms = enteringGrades(student.midterms, 1);
 
     cout << "Final Exam" << endl;
-    cin >> student.finalexam;
+    cin >> student.finalexam; //need validation
+    cout << student.finalexam << endl; // Print final exam grade to file
 }
 
-void printallGrades(const StudentGrades& student) {
-    cout << "Grades of " << student.name << endl;
+double printallGrades(const StudentGrades& student, ofstream& outFile) {
+    outFile << "Grades of " << student.name << endl;
 
     int totalAssignments = 0;
     int totalQuizzes = 0;
     int midterm = 0;
     int final = 0;
-    cout << "Assignments ";
+    outFile << "Assignments ";
     for (int i = 0; i < student.numberAssignments; i++) {
         totalAssignments += student.assignments[i];
-        cout << student.assignments[i] << " ";
+        outFile << student.assignments[i] << " ";
     }
-    cout << " (Total: " << totalAssignments << ")" << endl; // Print sum after loop
+    outFile << " (Total: " << totalAssignments << ")" << endl; // Print sum after loop
 
-    cout << "Quizzes ";
+    outFile << "Quizzes ";
     for (int i = 0; i < student.numberQuizzes; i++) {
         totalQuizzes += student.quizzes[i];
-        cout << student.quizzes[i] << " ";
+        outFile << student.quizzes[i] << " ";
     }
-    cout << " (Total: " << totalQuizzes << ")" << endl; // Print sum after loop
+    outFile << " (Total: " << totalQuizzes << ")" << endl; // Print sum after loop
 
-    cout << "Midterms ";
+    outFile << "Midterms ";
     for (int i = 0; i < student.numberMidterms; i++) {
-        cout << student.midterms[i] << " ";
+        outFile << student.midterms[i] << " ";
         midterm = student.midterms[i];
     }
-    cout << "Final Exam " << student.finalexam << endl;
+    outFile << "Final Exam " << student.finalexam << endl;
     final = student.finalexam;
     int overallgrade = 0;
     overallgrade = totalAssignments + totalQuizzes + midterm + final;
-    cout <<"Total Grade = " << overallgrade<<"%"<<endl;
+    outFile << "Total Grade = " << overallgrade << "%" << endl;
+
+    return overallgrade;
+}
+
+double calculateTotalAverage(const StudentGrades students[], int numStudents) {
+    double totalSum = 0.0;
+    ofstream outFile("grades_output.txt"); // Open a file for writing
+    if (!outFile) {
+        cerr << "Error: Unable to open the file." << endl;
+        return 0;
+    }
+    for (int i = 0; i < numStudents; i++) {
+        // Call printallGrades to get overall grade of each student
+        totalSum += printallGrades(students[i], outFile);
+    }
+    outFile.close(); // Close the file after writing
+    // Calculate average by dividing total sum by number of students
+    return totalSum / numStudents;
 }

@@ -16,10 +16,13 @@ struct StudentGrades {
 	int numberQuizzes;
 	int numberMidterms;
 	int finalexam;
+	double overallgrade;
 };
 
 int enteringGrades(int grades[], int maxGrades);
 void addingGrades(StudentGrades& student);
-void printallGrades(const StudentGrades& student); // Pass by reference to avoid unnecessary copying
+double calculateTotalAverage(const StudentGrades students[], int numStudents);
 
 #endif // STUDENT_GRADES_H
+
+
