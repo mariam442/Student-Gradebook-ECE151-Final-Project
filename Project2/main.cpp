@@ -5,6 +5,7 @@
 #include <limits> // for numeric_limits
 #include <cctype> // for std::isdigit
 #include <algorithm> // for std::any_of
+#include <iomanip>
 
 using namespace std;
 
@@ -35,7 +36,7 @@ int main() {
     }
     double average = 0;
     average = calculateTotalAverage(students, StudentsNumber); // This function already writes to the file
-    outFile << "The Average Grade of the Whole Class is " << average << "%" << endl;
+    outFile << "The Average Grade of the Whole Class is " << fixed << setprecision(2) << average << "%" << endl;
 
     // Close the output file
     outFile.close();

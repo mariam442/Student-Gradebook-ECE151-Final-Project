@@ -1,4 +1,5 @@
 #include "StudentGrades.h" // Include the header file
+#include"functions.h"
 #include <fstream> // Include the header for file stream operations
 #include <string>  // for any string
 #include <limits> // for numeric_limits
